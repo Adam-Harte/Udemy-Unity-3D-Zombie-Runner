@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,8 @@ public class Weapon : MonoBehaviour
     float range = 100f;
     [SerializeField]
     float damage = 10f;
+    [SerializeField]
+    ParticleSystem muzzleFlash;
     private void Update()
     {
         if (Input.GetButtonDown("Fire1"))
@@ -19,6 +22,17 @@ public class Weapon : MonoBehaviour
     }
 
     void Shoot()
+    {
+        PlayMuzzleFlash();
+        ProcessRaycast();
+    }
+
+    private void PlayMuzzleFlash()
+    {
+        muzzleFlash.Play();
+    }
+
+    private void ProcessRaycast()
     {
         RaycastHit hit;
 
