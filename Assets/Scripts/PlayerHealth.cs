@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
@@ -14,6 +12,7 @@ public class PlayerHealth : MonoBehaviour
         if (hitPoints <= 0)
         {
             Debug.Log("You dead, my glip glop!");
+            GetComponent<DeathHandler>().HandleDeath();
         }
     }
 }
